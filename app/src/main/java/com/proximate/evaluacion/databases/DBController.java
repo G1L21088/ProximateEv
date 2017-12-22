@@ -1,12 +1,7 @@
 package com.proximate.evaluacion.databases;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-
 import com.proximate.evaluacion.network.DataItem;
 import com.proximate.evaluacion.network.SeccionesItem;
-import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import com.vansuita.sqliteparser.SqlParser;
 
 /**
@@ -42,8 +37,8 @@ public class DBController {
 
     public static String[] dropTables() {
         return new String[]{
-                SqlParser.delete("data").build(),
-                SqlParser.delete("secciones").build()
+                "DROP TABLE IF EXISTS data",
+                "DROP TABLE IF EXISTS secciones"
         };
     }
 

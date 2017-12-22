@@ -35,25 +35,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         sharedPreferences = getSharedPreferences("Local", MODE_PRIVATE);
         if (sharedPreferences.contains("token")) {
+            finish();
             startActivity(new Intent(MainActivity.this, UserActivity.class));
         }
         progressDialog = Herramientas.progressStat(MainActivity.this, null);
-        setField();
+        setFields();
     }
 
-    private void setField() {
+    private void setFields() {
         edtCorreo = findViewById(R.id.edtCorreo);
         edtContrasenia = findViewById(R.id.edtContrasenia);
         btnIniciar = findViewById(R.id.btnIniciar);
         btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Login();
+                doLogin();
             }
         });
     }
 
-    private void Login() {
+    private void doLogin() {
         progressDialog.show();
         new WebServices().login(edtCorreo.getText().toString().trim(), edtContrasenia.getText().toString().trim()).enqueue(new Callback<ResponseLogin>() {
             @Override
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                                             dialog.dismiss();
                                             sharedPreferences.edit()
                                                     .putString("token", login.getToken()).apply();
+                                            finish();
                                             startActivity(new Intent(MainActivity.this, UserActivity.class));
                                         }
                                     })

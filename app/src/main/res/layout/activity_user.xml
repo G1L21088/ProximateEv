@@ -27,6 +27,14 @@
             android:contentDescription="@string/app_name"
             android:src="@android:drawable/ic_menu_gallery" />
 
+        <Button
+            android:id="@+id/btnCerrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@android:drawable/ic_menu_close_clear_cancel"
+            android:text="@string/btn_salir"
+            android:textSize="10sp" />
+
         <TextView
             android:id="@+id/tvInfo"
             android:layout_width="match_parent"

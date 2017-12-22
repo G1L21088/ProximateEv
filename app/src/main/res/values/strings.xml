@@ -3,6 +3,7 @@
     <string name="hint_correo">Correo</string>
     <string name="hint_contrasenia">Contraseña</string>
     <string name="btn_ingresar">Ingresar</string>
+    <string name="btn_salir">Salir</string>
     <string name="btn_aceptar">Aceptar</string>
     <string name="msg_cargando">Cargando…</string>
 </resources>

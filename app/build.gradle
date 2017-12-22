@@ -31,4 +31,6 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'
     compile 'com.github.jrvansuita:SQLiteHelper:v1.0.0'
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.5.1'
+    compile 'com.karumi:dexter:4.2.0'
 }

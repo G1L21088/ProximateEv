@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import com.proximate.evaluacion.network.DataItem;
 import com.proximate.evaluacion.network.ResponseUser;
@@ -41,17 +40,21 @@ public class DatabaseAccess {
     }
 
     public void crateTables() {
-        open();
-        for (String create : DBController.createTables()) {
-            database.execSQL(create);
+        try {
+            open();
+            for (String create : DBController.createTables()) {
+                database.execSQL(create);
+            }
+            close();
+        } catch (Exception e){
+            e.printStackTrace();
         }
-        close();
     }
 
     public void dropTables() {
         open();
-        for (String create : DBController.dropTables()) {
-            database.execSQL(create);
+        for (String drop : DBController.dropTables()) {
+            database.execSQL(drop);
         }
         close();
     }
