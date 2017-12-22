@@ -10,6 +10,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
@@ -43,18 +44,25 @@ public class WebServices {
         services = retrofit.create(Services.class);
     }
 
-
-
-    public Call<Objetos.Login> login(String correo, String contrasenia) {
+    public Call<ResponseLogin> login(String correo, String contrasenia) {
         return services.login(new LoginRequest(correo, contrasenia));
     }
 
+    public Call<ResponseUser> userData(String token) {
+        return services.userdata(token);
+    }
+
     public interface Services {
-        @Headers("Content-Type:application/json; charset=utf-8")
         @POST("catalog/dev/webadmin/authentication/login")
-        Call<Objetos.Login> login(
+        Call<ResponseLogin> login(
                 @Body() LoginRequest body
         );
+
+        @POST("catalog/dev/webadmin/users/getdatausersession")
+        Call<ResponseUser> userdata(
+                @Header("Authorization") String token
+        );
+
     }
 
     class LoginRequest {
